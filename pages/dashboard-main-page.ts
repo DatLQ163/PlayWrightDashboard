@@ -29,7 +29,7 @@ export default class DashboardMainPage {
     await this.panelBtn.click();
   }
 
-  async openProfilePage(): Promise<void> {
+  async openDataProfilePage(): Promise<void> {
     await this.administer.click();
     await this.profileBtn.click();
   }
@@ -40,7 +40,6 @@ export default class DashboardMainPage {
     }else{
       await expect(this.page.getByRole('link', { name: pageName , exact:true })).toBeHidden();
     }
-    
   }
 
   getRandomInt(min: number, max: number): number {

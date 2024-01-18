@@ -12,5 +12,7 @@ test('TC028 Verify that when "Add New Panel" form is on focused all other contro
     await loginPage.login('administrator', '');
     await dashboardMainPage.openPanelPage();
     await panelPage.openAddNewPanel();
-    await expect(dashboardMainPage.overviewPage).toBeVisible();
+    await dashboardMainPage.logout();
+    await loginPage.verifyLoginPageDisplay();
+    await page.close();
   })

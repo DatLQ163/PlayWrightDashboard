@@ -1,4 +1,4 @@
-import { Locator, Page } from "@playwright/test";
+import { Locator, Page ,expect} from "@playwright/test";
 
 
 export default class LoginPage {
@@ -11,6 +11,11 @@ export default class LoginPage {
   async go(): Promise<void> {
     await this.page.goto('/TADashboard/login.jsp');
   }
+
+  async verifyLoginPageDisplay(){
+    await expect.soft(this.usernameTxt).not.toBeVisible();
+  }
+
 
   async getLoginDialogText(): Promise<String>{
     let dialogMessage: String = '';

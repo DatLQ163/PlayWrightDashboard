@@ -18,6 +18,7 @@ test('TC014 Verify that user can login specific repository successfully via Dash
     await dashboardMainPage.logout();
     await loginPage.login('administrator', '','SampleRepository');
     await dashboardMainPage.deletePage(pageName);
+    await page.close();
   })
 
 
@@ -40,4 +41,5 @@ test('TC014 Verify that user can login specific repository successfully via Dash
     await dashboardMainPage.checkPageExist(parentName,false);
     await dashboardMainPage.overviewPage.click();
     await expect(dashboardMainPage.deletePageBtn).toBeHidden();
+    await page.close();
   })

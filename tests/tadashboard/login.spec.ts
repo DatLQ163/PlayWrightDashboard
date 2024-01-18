@@ -9,6 +9,7 @@ test('TC001 Verify that user can login specific repository successfully via Dash
 
   const dashboardMainPage = new DashboardMainPage(page);
   await dashboardMainPage.displays();
+  await page.close();
 })
 
 test('TC002 Verify that user fails to login specific repository successfully via Dashboard login page with incorrect credentials', async ({ page }) =>{
@@ -21,6 +22,5 @@ test('TC002 Verify that user fails to login specific repository successfully via
     expect(dialog.message()).toBe(verifyDialogMessage);
     dialog.accept();
   })
-
-  page.close();
+  await page.close();
 })
