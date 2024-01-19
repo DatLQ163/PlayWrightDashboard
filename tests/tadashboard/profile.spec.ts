@@ -12,11 +12,11 @@ test('TC067 Verify that Data Profiles are listed alphabetically', async ({ page 
     await loginPage.login('administrator', '');
   
     await dashboardMainPage.openDataProfilePage();
-    await profilePage.verifyTableSort();
+    await profilePage.verifyDataProfileSort();
     await page.close();
   })
 
-  test('',async({page})=> {
+  test('TC082 Verify that user is able to add levels of fields ',async({page})=> {
     const loginPage = new LoginPage(page);
     const dashboardMainPage = new DashboardMainPage(page);
     const profilePage = new ProfilePage(page);

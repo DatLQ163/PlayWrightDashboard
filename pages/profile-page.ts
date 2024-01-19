@@ -6,13 +6,25 @@ export default class ProfilePage {
     readonly sortFieldsLink: Locator = this.page.getByRole('listitem').filter({hasText: 'Sort Field'});
     readonly selectFields: Locator = this.page.locator('#cbbFields');
     readonly addLevelBtn: Locator = this.page.locator('#btnAddSortField');
-    readonly listDataProfile: Locator = this.page.locator("//table[@class = 'GridView']//td[count(//th[.='Data Profile'])+1]");
+    // readonly listDataProfile: Locator = this.page.locator("//table[@class = 'GridView']//td[count(//th[.='Data Profile'])+1]");
     constructor(private readonly page: Page) {}
 
     async verifyTableSort(): Promise<void>{
         const table = await this.page.$("xpath=//table[@class='GridView']");
         const tdElements = await table?.$$eval('td',tds => tds.map(td => td.textContent));
         const tdElementsSort = tdElements?.slice().sort();
+        console.log(tdElements);
+        console.log(tdElementsSort);
+        const isSorted = JSON.stringify(tdElements) === JSON.stringify(tdElementsSort);
+        console.log(isSorted);
+    }
+
+    async verifyDataProfileSort(): Promise<void>{
+        const listDataProfile = await this.page.$("//table[@class='GridView']/tbody");
+        const tdElements = await listDataProfile?.$$eval("//td[count(//th[.='Data Profile'])+1]",tds => tds.map(n => n.textContent));
+        const tdElementsSort = tdElements?.slice().sort();
+        console.log(tdElements);
+        console.log(tdElementsSort);
         const isSorted = JSON.stringify(tdElements) === JSON.stringify(tdElementsSort);
         console.log(isSorted);
     }
