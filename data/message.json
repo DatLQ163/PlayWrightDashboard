@@ -1,5 +1,5 @@
 {
     "verifyDialogMessage": "Username or password is invalid",
     "removePageConfirmMessage": "Are you sure you want to remove this page?",
-    "cannotDeletePageMessage": "Cannot delete page 'Test' since it has child page(s)."
+    "cannotDeletePageMessage": "Cannot delete page 'PageName' since it has child page(s)."
 }

@@ -52,7 +52,7 @@ export default class DashboardMainPage {
   }
 
   async deletePage(childName: string , parentName?: string, dialogMessage1?: string, dialogMessage2?: string): Promise<void>{
-    if(parentName != null && this.parentPage != undefined) await this.parentPage.hover();
+    if(parentName != null && this.parentPage != undefined) await this.page.getByRole('link', { name: parentName, exact: true }).hover();
     await this.page.getByRole('link', { name: childName , exact:true }).click();
     await this.globalSettingBtn.hover();
     if(dialogMessage1 != null){

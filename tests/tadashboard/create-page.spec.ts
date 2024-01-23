@@ -2,6 +2,7 @@ import { test , expect } from '@playwright/test';
 import DashboardMainPage from 'pages/dashboard-main-page';
 import LoginPage from 'pages/login-page';
 import message from '../../data/message.json';
+import users from '../../data/users.json';
 
 test('TC014 Verify that user can login specific repository successfully via Dashboard login page with correct credentials', async ({ page }) => {
     const loginPage = new LoginPage(page);
@@ -27,12 +28,13 @@ test('TC014 Verify that user can login specific repository successfully via Dash
     const dashboardMainPage =  new DashboardMainPage(page);
     const parentName = 'Test';
     const childName = 'Test Child';
-
+    const deletePageMessage = message.cannotDeletePageMessage.replace('PageName',parentName);
+    
     await loginPage.go();
-    await loginPage.login('administrator','','SampleRepository');
+    await loginPage.login(users.validUser.id,users.validUser.password,'SampleRepository');
     await dashboardMainPage.createPage(parentName);
     await dashboardMainPage.createPage(childName, parentName);
-    await dashboardMainPage.deletePage(parentName,'',message.removePageConfirmMessage,message.cannotDeletePageMessage);
+    await dashboardMainPage.deletePage(parentName,'',message.removePageConfirmMessage,deletePageMessage);
     await dashboardMainPage.deletePage(childName,parentName,message.removePageConfirmMessage);
     await dashboardMainPage.checkPageExistOrNot(childName,false);
     await dashboardMainPage.deletePage(parentName);
