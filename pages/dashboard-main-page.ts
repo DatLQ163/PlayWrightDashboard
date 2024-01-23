@@ -34,18 +34,12 @@ export default class DashboardMainPage {
     await this.profileBtn.click();
   }
 
-  async checkPageExist(pageName: string, isExist:boolean): Promise<void>{
+  async checkPageExistOrNot(pageName: string, isExist:boolean): Promise<void>{
     if(isExist==true){
       await expect(this.page.getByRole('link', { name: pageName , exact:true })).toBeVisible();
     }else{
       await expect(this.page.getByRole('link', { name: pageName , exact:true })).toBeHidden();
     }
-  }
-
-  getRandomInt(min: number, max: number): number {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min)) + min;
   }
 
   async createPage(pageName: string, parentPage?:string): Promise<void>{

@@ -1,0 +1,14 @@
+{
+    "validUser": {
+        "id": "administrator",
+        "password": ""
+    },
+    "testUser": {
+        "id": "test",
+        "password": "TEST"
+    },
+    "invalidUser": {
+        "id": "abc",
+        "password": "abc"
+    }
+}

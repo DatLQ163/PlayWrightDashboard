@@ -13,7 +13,6 @@ test('TC067 Verify that Data Profiles are listed alphabetically', async ({ page 
   
     await dashboardMainPage.openDataProfilePage();
     await profilePage.verifyDataProfileSort();
-    await page.close();
   })
 
   test('TC082 Verify that user is able to add levels of fields ',async({page})=> {
@@ -33,5 +32,4 @@ test('TC067 Verify that Data Profiles are listed alphabetically', async ({ page 
     await profilePage.verifySortFiledNameIsAdd('Name');
     await profilePage.addSortFields('Location');
     await profilePage.verifySortFiledNameIsAdd('Location');
-    await page.close();
   })
